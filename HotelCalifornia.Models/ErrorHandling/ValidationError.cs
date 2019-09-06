@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HotelCalifornia.Domain.ErrorHandling
+﻿namespace HotelCalifornia.Models.ErrorHandling
 {
     /// <summary>
     /// Describes the model validation error.

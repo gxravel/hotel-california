@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HotelCalifornia.Domain.ErrorHandling
+﻿namespace HotelCalifornia.Models.ErrorHandling
 {
     /// <summary>
     /// A machine-readable format for specifying errors in HTTP API responses based on https://tools.ietf.org/html/rfc7807.

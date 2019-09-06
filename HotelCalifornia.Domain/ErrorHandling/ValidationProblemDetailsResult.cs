@@ -1,9 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using HotelCalifornia.Models.ErrorHandling;
+using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
+using ValidationProblemDetails = HotelCalifornia.Models.ErrorHandling.ValidationProblemDetails;
 
 namespace HotelCalifornia.Domain.ErrorHandling
 {

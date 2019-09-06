@@ -1,16 +1,12 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using HotelCalifornia.Data;
 using HotelCalifornia.Models.Data;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace HotelCalifornia
 {
@@ -26,9 +22,10 @@ namespace HotelCalifornia
                 try
                 {
                     var context = services.GetRequiredService<DataContext>();
+                    var roleManager = services.GetRequiredService<RoleManager<Role>>();
                     var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
                     context.Database.Migrate();
-                    var dataSeeder = new DataSeeder(context, userManager);
+                    var dataSeeder = new DataSeeder(context, roleManager, userManager);
                     dataSeeder.Initialize().Wait();
                 }
                 catch (Exception ex)

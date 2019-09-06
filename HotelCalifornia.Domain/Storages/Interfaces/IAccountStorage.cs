@@ -1,8 +1,5 @@
-﻿using HotelCalifornia.Domain.ErrorHandling;
+﻿using HotelCalifornia.Models.ErrorHandling;
 using HotelCalifornia.Models.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HotelCalifornia.Domain.Storages.Interfaces
@@ -15,8 +12,24 @@ namespace HotelCalifornia.Domain.Storages.Interfaces
     /// </summary>
     public interface IAccountStorage
     {
+        /// <summary>
+        /// Registers a new user.
+        /// </summary>
+        /// <param name="model">The register model</param>
+        /// <returns>null if success</returns>
         public Task<ResponseModel> Register(RegisterViewModel model);
+
+        /// <summary>
+        /// Logs in to the system.
+        /// </summary>
+        /// <param name="model">The login model</param>
+        /// <returns>null if success</returns>
         public Task<ResponseModel> Login(LoginViewModel model);
+
+        /// <summary>
+        /// Logs out of the system.
+        /// </summary>
+        /// <returns>null</returns>
         public Task<ResponseModel> Logout();
     }
 }

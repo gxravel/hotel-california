@@ -3,15 +3,17 @@ using System;
 using HotelCalifornia.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace HotelCalifornia.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20190905235504_HotelSupported")]
+    partial class HotelSupported
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -90,10 +92,10 @@ namespace HotelCalifornia.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("CheckIntoRoomDate")
+                    b.Property<DateTime>("CheckIntoDate")
                         .HasColumnType("timestamp without time zone");
 
-                    b.Property<DateTime>("CheckOutRoomDate")
+                    b.Property<DateTime>("CheckOutDate")
                         .HasColumnType("timestamp without time zone");
 
                     b.Property<string>("FullName")

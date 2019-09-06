@@ -1,23 +1,32 @@
-﻿using HotelCalifornia.Domain.ErrorHandling;
-using HotelCalifornia.Domain.Storages.Interfaces;
+﻿using HotelCalifornia.Domain.Storages.Interfaces;
 using HotelCalifornia.Models.Data;
+using HotelCalifornia.Models.ErrorHandling;
 using HotelCalifornia.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Server.IIS;
-using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HotelCalifornia.Domain.Storages
 {
+    /// <summary>
+    /// Contains methods: 
+    /// <para><see cref="Register(RegisterViewModel)"/></para>
+    /// <para><seealso cref="Login(LoginViewModel)"/></para> 
+    /// <para><seealso cref="Logout"/></para>
+    /// Uses:
+    /// <para><see cref="SignInManager{TUser}"/></para>
+    /// <para><seealso cref="UserManager{TUser}"/></para>
+    /// </summary>
     public class AccountStorage : IAccountStorage
     {
         private readonly SignInManager<ApplicationUser> _signManager;
         private readonly UserManager<ApplicationUser> _userManager;
 
+        /// <summary>
+        /// Provides dependency injection.
+        /// </summary>
+        /// <param name="signManager">The sign in manager</param>
+        /// <param name="userManager">The user manager</param>
         public AccountStorage(SignInManager<ApplicationUser> signManager,
                               UserManager<ApplicationUser> userManager)
         {
@@ -25,6 +34,11 @@ namespace HotelCalifornia.Domain.Storages
             _userManager = userManager;
         }
 
+        /// <summary>
+        /// Registers a new user.
+        /// </summary>
+        /// <param name="model">The register model</param>
+        /// <returns>null if success</returns>
         public async Task<ResponseModel> Register(RegisterViewModel model)
         {
             if (model.Password != model.PasswordConfirm)
@@ -48,6 +62,11 @@ namespace HotelCalifornia.Domain.Storages
             return null;
         }
 
+        /// <summary>
+        /// Logs in to the system.
+        /// </summary>
+        /// <param name="model">The login model</param>
+        /// <returns>null if success</returns>
         public async Task<ResponseModel> Login(LoginViewModel model)
         {
             var result = await _signManager.PasswordSignInAsync(model.Login, model.Password, false, false);
@@ -58,6 +77,10 @@ namespace HotelCalifornia.Domain.Storages
             return null;
         }
 
+        /// <summary>
+        /// Logs out of the system.
+        /// </summary>
+        /// <returns>null</returns>
         public async Task<ResponseModel> Logout()
         {
             await _signManager.SignOutAsync();

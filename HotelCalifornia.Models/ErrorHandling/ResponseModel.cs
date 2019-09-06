@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace HotelCalifornia.Domain.ErrorHandling
+﻿namespace HotelCalifornia.Models.ErrorHandling
 {
     /// <summary>
     /// The Api response model.
@@ -25,7 +21,7 @@ namespace HotelCalifornia.Domain.ErrorHandling
         /// <summary>
         /// Creates the object and initializes it with <paramref name="response"/>
         /// </summary>
-        /// <param name="response">The actual response or problem details.</param>
+        /// <param name="response">The actual response</param>
         public ResponseModel(object response)
         {
             Response = response;

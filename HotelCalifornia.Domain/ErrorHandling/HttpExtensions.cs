@@ -1,15 +1,12 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace HotelCalifornia.Domain.ErrorHandling
 {
     /// <summary>
-    /// The <c>HttpExtensions</c> class.
     /// Contains the method to write JSON as request response.
     /// </summary>
     public static class HttpExtensions
@@ -23,9 +20,9 @@ namespace HotelCalifornia.Domain.ErrorHandling
         /// Writes JSON as request response according to <paramref name="obj"/> object
         /// </summary>
         /// <typeparam name="T">Any type</typeparam>
-        /// <param name="response">This HttpResponse</param>
-        /// <param name="obj">Object to serialize - actual response</param>
-        /// <param name="contentType">Content type to specify</param>
+        /// <param name="response">This http response</param>
+        /// <param name="obj">The object to serialize - actual response</param>
+        /// <param name="contentType">The content type</param>
         public static async Task WriteJson<T>(this HttpResponse response, T obj, string contentType = null)
         {
             response.ContentType = contentType ?? "application/json";

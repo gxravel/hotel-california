@@ -1,13 +1,20 @@
 ﻿using HotelCalifornia.Models.Auxiliary;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Text;
 
 namespace HotelCalifornia.Models.ViewModels
 {
     /// <summary>
     /// Contains the properties expecting from the login request.
+    /// <list type="bullet">
+    /// <item>
+    /// <term>Login</term>
+    /// <description>Required string</description>
+    /// </item>
+    /// <item>
+    /// <term>Password</term>
+    /// <description>Required string</description>
+    /// </item>
+    /// </list>
     /// </summary>
     public class LoginViewModel
     {

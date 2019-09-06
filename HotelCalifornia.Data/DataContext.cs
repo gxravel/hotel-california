@@ -1,26 +1,32 @@
 ﻿using HotelCalifornia.Models.Data;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace HotelCalifornia.Data
 {
-    public class DataContext : IdentityDbContext<ApplicationUser, IdentityRole<Guid>, Guid>
+    /// <summary>
+    /// The Identity database context class.
+    /// </summary>
+    public class DataContext : IdentityDbContext<ApplicationUser, Role, Guid>
     {
+        /// <summary>
+        /// The default <c>IdentityDbContext</c> constructor
+        /// </summary>
+        /// <param name="options">The database context options</param>
         public DataContext(DbContextOptions<DataContext> options) : base(options)
         {
 
         }
 
-        //protected override void OnModelCreating(ModelBuilder builder)
-        //{
-        //    builder.Entity<ApplicationUser>()
-        //        .HasIndex(u => u.NormalizedUserName)
-        //        .IsUnique();
-        //    base.OnModelCreating(builder);
-        //}
+        /// <summary>
+        /// The database table for hotel rooms.
+        /// </summary>
+        public DbSet<HotelRoom> HotelRooms { get; set; }
+
+        /// <summary>
+        /// The database table for guests.
+        /// </summary>
+        public DbSet<Guest> Guests { get; set; }
     }
 }

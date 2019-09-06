@@ -2,14 +2,18 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace HotelCalifornia.Config
 {
+    /// <summary>
+    /// Contains configuration options for identity.
+    /// </summary>
     public class IdentityConfig
     {
+        /// <summary>
+        /// Defines the main options connected with lockout, signin and user settings.
+        /// </summary>
+        /// <param name="options">The identity options</param>
         public static void MainOptions(IdentityOptions options)
         {
             // Default Lockout settings.
@@ -33,6 +37,10 @@ namespace HotelCalifornia.Config
             options.User.RequireUniqueEmail = false;
         }
 
+        /// <summary>
+        /// Defines the application cookie optrions.
+        /// </summary>
+        /// <param name="options">The cookie authentication options</param>
         public static void ApplicationCookie(CookieAuthenticationOptions options)
         {
             options.AccessDeniedPath = "/Account/AccessDenied";
@@ -44,6 +52,10 @@ namespace HotelCalifornia.Config
             options.SlidingExpiration = true;
         }
 
+        /// <summary>
+        /// Defines the password hasher options.
+        /// </summary>
+        /// <param name="options">The password hasher options</param>
         public static void PasswordHasher(PasswordHasherOptions options)
         {
             options.IterationCount = 12000;

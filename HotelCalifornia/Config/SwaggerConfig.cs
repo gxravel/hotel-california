@@ -4,14 +4,14 @@ using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 using Swashbuckle.AspNetCore.SwaggerUI;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Threading.Tasks;
 
 namespace HotelCalifornia.Config
 {
+    /// <summary>
+    /// Contains configuration options for swagger.
+    /// </summary>
     public class SwaggerConfig
     {
         private static string Name => "Hotel California";
@@ -19,12 +19,20 @@ namespace HotelCalifornia.Config
         private static string Endpoint => $"/swagger/{Version}/swagger.json";
         private static string UIEndpoint => "";
 
+        /// <summary>
+        /// Defines the SwaggerUI options.
+        /// </summary>
+        /// <param name="config">The SwaggerUI optrions</param>
         public static void UI(SwaggerUIOptions config)
         {
             config.RoutePrefix = UIEndpoint;
             config.SwaggerEndpoint(Endpoint, Name);
         }
 
+        /// <summary>
+        /// Defines the SwaggerGen options.
+        /// </summary>
+        /// <param name="config">The SwaggerGen oprions</param>
         public static void Gen(SwaggerGenOptions config)
         {
             config.SwaggerDoc(

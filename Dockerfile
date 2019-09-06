@@ -16,6 +16,6 @@ COPY HotelCalifornia.Models/ ./HotelCalifornia.Models/
 RUN dotnet publish -c release -o out
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0 AS runtime
-# WORKDIR /app
-COPY --from=build /app/HotelCalifornia/out ./
+
+COPY --from=build /app/out ./
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet HotelCalifornia.dll

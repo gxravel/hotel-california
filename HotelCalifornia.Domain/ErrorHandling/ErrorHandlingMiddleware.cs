@@ -1,18 +1,16 @@
-﻿using Microsoft.AspNetCore.Diagnostics;
+﻿using HotelCalifornia.Models.ErrorHandling;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Server.IIS;
 using Microsoft.Extensions.Logging;
 using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace HotelCalifornia.Domain.ErrorHandling
 {
     /// <summary>
     /// The middlware for error handling.
-    /// Logs and handles the global errors invoked.
+    /// Logs and handles the global errors that were invoked.
     /// </summary>
     public class ErrorHandlingMiddleware
     {
@@ -20,10 +18,10 @@ namespace HotelCalifornia.Domain.ErrorHandling
         private readonly ILogger<ErrorHandlingMiddleware> _logger;
 
         /// <summary>
-        /// Dependency injection for <c>ErrorHandlingMiddleware</c>
+        /// Provides dependency injection
         /// </summary>
-        /// <param name="logger">ILogger to provide</param>
-        /// <param name="next">RequestDelegate to provide</param>
+        /// <param name="logger">A logger</param>
+        /// <param name="next">The request delegate</param>
         public ErrorHandlingMiddleware(
             ILogger<ErrorHandlingMiddleware> logger,
             RequestDelegate next)
@@ -35,7 +33,7 @@ namespace HotelCalifornia.Domain.ErrorHandling
         /// <summary>
         /// Performs the logging and executes the error handling actions if an error occured.
         /// </summary>
-        /// <param name="context">HttpContext</param>
+        /// <param name="context">An http context</param>
         /// <returns>Task when the middleware invoked</returns>
         public async Task Invoke(
             HttpContext context)
@@ -54,8 +52,8 @@ namespace HotelCalifornia.Domain.ErrorHandling
         /// <summary>
         /// Defines the problem details according to <paramref name="ex"/> and writes the response.
         /// </summary>
-        /// <param name="context">HttpContext</param>
-        /// <param name="ex">Exception occured</param>
+        /// <param name="context">An http context</param>
+        /// <param name="ex">The exception occured</param>
         /// <returns>Task when the response was written</returns>
         private static Task HandleExceptionAsync(HttpContext context, Exception ex)
         {
@@ -74,7 +72,7 @@ namespace HotelCalifornia.Domain.ErrorHandling
                 problemDetails.Status = clientException.StatusCode;
                 problemDetails.Detail = clientException.Message;
             }
-            else 
+            else
             {
                 problemDetails.Title = "An unexpected error occurred!";
                 problemDetails.Status = 500;

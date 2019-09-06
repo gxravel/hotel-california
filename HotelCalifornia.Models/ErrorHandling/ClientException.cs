@@ -1,9 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace HotelCalifornia.Domain.ErrorHandling
+namespace HotelCalifornia.Models.ErrorHandling
 {
     /// <summary>
     /// The realization of <c>4xx Client Error</c> exception.
