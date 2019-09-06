@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-using System;
+﻿using System;
 
 namespace HotelCalifornia.Models.ErrorHandling
 {
@@ -12,7 +11,7 @@ namespace HotelCalifornia.Models.ErrorHandling
         /// <summary>
         /// 4xx Status code.
         /// </summary>
-        public int StatusCode { get; set; } = StatusCodes.Status400BadRequest;
+        public int StatusCode { get; set; } = 400;
 
         /// <summary>
         /// The default <c>Exception</c> constructor.
